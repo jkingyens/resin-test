@@ -11,4 +11,4 @@ app.get('/', function (req, res) {
 })
 
 let server = http.createServer(app)
-server.listen(3000)
+server.listen(80)
