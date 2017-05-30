@@ -22,8 +22,7 @@ app.get('/', function (req, res) {
 
 app.get('/photo.jpg', function (req, res) { 
 
-  //listen for the "read" event triggered when each new photo/video is saved
-  camera.on("read", function(err, timestamp, filename){ 
+   var captureOnce = function(err, timestamp, filename){ 
 
     // draw the image to the screen? 
     console.log('captured', filename)
@@ -34,11 +33,15 @@ app.get('/photo.jpg', function (req, res) {
         if (err) throw err; // Fail if the file can't be read.
         res.writeHead(200, {'Content-Type': 'image/jpeg'});
         res.end(data); // Send the file data to the browser.
+        camera.removeListener('read', captureOnce)
       });
 
     }
 
-  });
+  }
+
+  //listen for the "read" event triggered when each new photo/video is saved
+  camera.on("read", captureOnce);
 
   //to take a snapshot, start a timelapse or video recording
   camera.start();
