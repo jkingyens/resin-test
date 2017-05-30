@@ -1,23 +1,43 @@
-// const http = require('http')
-// const express = require('express')
+// video camera
 
-// let app = express()
-// app.get('/', function (req, res) { 
+var RaspiCam = require("raspicam");
+var camera = new RaspiCam({ 
+  mode: 'photo',
+  output: '/data/blah.jpg'
+});
 
-//   return res.json({
-//     hello: 'world!'
-//   })
+//listen for the "read" event triggered when each new photo/video is saved
+camera.on("read", function(err, timestamp, filename){ 
 
-// })
+	// draw the image to the screen? 
+  console.log('captured', filename)
 
-// let server = http.createServer(app)
-// server.listen(80)
+});
 
+//to take a snapshot, start a timelapse or video recording
+camera.start();
+
+/* web server */
+const http = require('http')
+const express = require('express')
+
+let app = express()
+app.get('/', function (req, res) { 
+
+  return res.json({
+    hello: 'world!'
+  })
+
+})
+
+let server = http.createServer(app)
+server.listen(80)
+
+/* graphical clock */
 
 var pitft = require("pitft");
 
 var fb = pitft("/dev/fb1", true); // Returns a framebuffer in double buffering mode
-console.log("starting node.js script...")
 
 // Clear the back buffer
 fb.clear();
