@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jkingyens/resin-test#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "pitft": "0.0.15"
   }
 }
