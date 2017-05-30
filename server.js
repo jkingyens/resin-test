@@ -6,17 +6,6 @@ var camera = new RaspiCam({
   output: '/data/blah.jpg'
 });
 
-//listen for the "read" event triggered when each new photo/video is saved
-camera.on("read", function(err, timestamp, filename){ 
-
-	// draw the image to the screen? 
-  console.log('captured', filename)
-
-});
-
-//to take a snapshot, start a timelapse or video recording
-camera.start();
-
 /* web server */
 const http = require('http')
 const express = require('express')
@@ -27,6 +16,31 @@ app.get('/', function (req, res) {
   return res.json({
     hello: 'world!'
   })
+
+})
+
+app.get('/photo.jpg', function (req, res) { 
+
+  //listen for the "read" event triggered when each new photo/video is saved
+  camera.on("read", function(err, timestamp, filename){ 
+
+    // draw the image to the screen? 
+    console.log('captured', filename)
+
+    if (filename == 'blah.jpg')  {
+
+      fs.readFile('/data/blah.jpg', function(err, data) {
+        if (err) throw err; // Fail if the file can't be read.
+        res.writeHead(200, {'Content-Type': 'image/jpeg'});
+        res.end(data); // Send the file data to the browser.
+      });
+
+    }
+
+  });
+
+  //to take a snapshot, start a timelapse or video recording
+  camera.start();
 
 })
 
