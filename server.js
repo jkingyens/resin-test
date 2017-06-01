@@ -1,3 +1,12 @@
+// load the google assistant 
+
+var grpc = require('grpc');
+var Assistant = grpc.load(__dirname + '/assistant.proto');
+// The protoDescriptor object has the full package hierarchy
+var example = Assistant.EmbeddedAssistant;
+console.log(example)
+
+
 // video camera
 
 var fs = require('fs')
@@ -18,14 +27,6 @@ var sound = new Sound({
 });
  
 sound.record();
- 
-setTimeout(function () {
-    sound.pause(); // pause the recording after five seconds 
-}, 5000);
- 
-setTimeout(function () {
-    sound.resume(); // and resume it two seconds after pausing 
-}, 7000);
  
 setTimeout(function () {
     sound.stop(); // stop after ten seconds 

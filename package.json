@@ -20,6 +20,7 @@
     "aplay": "^1.1.0",
     "aws-iot-device-sdk": "^1.0.14",
     "express": "^4.15.3",
+    "grpc": "^1.3.7",
     "mqtt": "^2.8.0",
     "node-aplay": "^1.0.3",
     "node-arecord": "0.0.2",
