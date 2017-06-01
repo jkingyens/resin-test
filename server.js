@@ -1,11 +1,12 @@
 // load the google assistant 
 
+/*
 var grpc = require('grpc');
 var Assistant = grpc.load(__dirname + '/assistant.proto');
 // The protoDescriptor object has the full package hierarchy
 var example = Assistant.EmbeddedAssistant;
 console.log(example)
-
+*/
 
 // video camera
 
