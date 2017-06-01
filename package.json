@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/jkingyens/resin-test#readme",
   "dependencies": {
+    "aws-iot-device-sdk": "^1.0.14",
     "express": "^4.15.3",
+    "mqtt": "^2.8.0",
     "pitft": "0.0.15",
-    "raspicam": "^0.2.13"
+    "raspicam": "^0.2.13",
+    "say": "^0.11.0"
   }
 }
