@@ -12,6 +12,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 
 RUN apt-get update && apt-get install -yq build-essential libcairo2-dev
 RUN apt-get install festival festvox-kallpc16k
+RUN apt-get install alsa-base alsa-utils libasound2-dev
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
