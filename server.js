@@ -11,8 +11,8 @@ var Sound = require('node-arecord');
  
 var sound = new Sound({
  debug: true,    // Show stdout 
- destination_folder: '/tmp',
- filename: '/data/recording.wav',
+ destination_folder: '/data',
+ filename: 'recording.wav',
  alsa_format: 'dat',
  alsa_device: 'plughw:1,0'
 });
@@ -44,8 +44,8 @@ sound.on('complete', function() {
 
 
 // speaker test
-var say = require('say');
-say.speak('Say hello to my little friend');
+// var say = require('say');
+// say.speak('Say hello to my little friend');
 
 /* web server */
 const http = require('http')
