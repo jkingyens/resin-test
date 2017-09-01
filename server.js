@@ -1,4 +1,4 @@
-// load the google assistant 
+// load the google assistant
 
 /*
 var grpc = require('grpc');
@@ -10,30 +10,31 @@ console.log(example)
 
 // video camera
 
+/*
 var fs = require('fs')
 var RaspiCam = require("raspicam");
-var camera = new RaspiCam({ 
+var camera = new RaspiCam({
   mode: 'photo',
   output: '/data/blah.jpg'
 });
 
 var Sound = require('node-arecord');
- 
+
 var sound = new Sound({
- debug: true,    // Show stdout 
+ debug: true,    // Show stdout
  destination_folder: '/data',
  filename: 'recording.wav',
  alsa_format: 'dat',
  alsa_device: 'plughw:1,0'
 });
- 
+
 sound.record();
- 
+
 setTimeout(function () {
-    sound.stop(); // stop after ten seconds 
+    sound.stop(); // stop after ten seconds
 }, 10000);
- 
-// you can also listen for various callbacks: 
+
+// you can also listen for various callbacks:
 sound.on('complete', function() {
     console.log('Done with recording!');
 
@@ -49,12 +50,13 @@ sound.on('complete', function() {
 // var say = require('say');
 // say.speak('Say hello to my little friend');
 
-/* web server */
+*/
+
 const http = require('http')
 const express = require('express')
 
 let app = express()
-app.get('/', function (req, res) { 
+app.get('/', function (req, res) {
 
   return res.json({
     hello: 'world!'
@@ -62,11 +64,12 @@ app.get('/', function (req, res) {
 
 })
 
-app.get('/photo.jpg', function (req, res) { 
+/*
+app.get('/photo.jpg', function (req, res) {
 
-   var captureOnce = function(err, timestamp, filename){ 
+   var captureOnce = function(err, timestamp, filename){
 
-    // draw the image to the screen? 
+    // draw the image to the screen?
     console.log('captured', filename)
 
     if (filename == 'blah.jpg')  {
@@ -92,8 +95,6 @@ app.get('/photo.jpg', function (req, res) {
 
 let server = http.createServer(app)
 server.listen(80)
-
-/* graphical clock */
 
 var pitft = require("pitft");
 
@@ -174,3 +175,5 @@ drawDial();
 setInterval(function() {
   update();
 }, 100);
+
+*/

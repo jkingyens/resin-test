@@ -13,6 +13,14 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 RUN apt-get update && apt-get install -yq build-essential libcairo2-dev
 RUN apt-get install festival festvox-kallpc16k
 RUN apt-get install alsa-base alsa-utils libasound2-dev
+RUN apt-get install git dh-autoreconf libnl-3-dev libnl-genl-3-dev
+RUN cd ~
+RUN git clone https://github.com/linux-wpan/wpan-tools
+RUN cd wpan-tools
+RUN ./autogen.sh
+RUN ./configure CFLAGS='-g -O0' --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib
+RUN make
+RUN make install
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
