@@ -10,10 +10,10 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 #    alsa-utils libasound2-dev && \
 #    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -yq build-essential libcairo2-dev
-RUN apt-get install festival festvox-kallpc16k
-RUN apt-get install alsa-base alsa-utils libasound2-dev
-RUN apt-get install git dh-autoreconf libnl-3-dev libnl-genl-3-dev
+# RUN apt-get update && apt-get install -yq build-essential libcairo2-dev
+# RUN apt-get install festival festvox-kallpc16k
+# RUN apt-get install alsa-base alsa-utils libasound2-dev
+# RUN apt-get install git dh-autoreconf libnl-3-dev libnl-genl-3-dev
 RUN cd ~
 RUN git clone https://github.com/linux-wpan/wpan-tools
 RUN cd wpan-tools
@@ -36,7 +36,7 @@ RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf
 COPY . ./
 
 # copy the alsa config to home
-RUN cp .asoundrc ~
+# RUN cp .asoundrc ~
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
